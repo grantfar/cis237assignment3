@@ -9,15 +9,22 @@ namespace cis237assignment3
     abstract class Droid: IDroid
     {
         private string material, model, color;
-        private decimal baseCost, totalCost;
-
-        public virtual void CalculateBaseCost()
+        private decimal totalCost;
+        protected decimal baseCost;
+        public Droid(String Material, String Model, String Color)
         {
-            baseCost = 2000m;
-            
+            material = Material;
+            model = Model;
+            color = Color;
+        }
+
+        public void CalculateBaseCost(droidModelPrice[] droidCosts)
+        {
+            foreach(droidModelPrice d in droidCosts)
+                if (d.model.Equals(model))
+                    baseCost = d.price;
         }
         public abstract void CalculateTotalCost();
-
         public decimal TotalCost
         {
             get
@@ -28,6 +35,10 @@ namespace cis237assignment3
             {
                 totalCost = value;
             }
+        }
+        public override string ToString()
+        {
+            return color + " " + material + " " + model + " droid";
         }
     }
 }
