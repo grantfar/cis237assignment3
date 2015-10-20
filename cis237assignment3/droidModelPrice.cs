@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace cis237assignment3
 {
+    /// <summary>
+    /// A class for holding droid base prices
+    /// </summary>
     class droidModelPrice
     {
         public droidModelPrice(string Model, decimal Price)

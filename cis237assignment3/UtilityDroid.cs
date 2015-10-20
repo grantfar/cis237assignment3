@@ -14,16 +14,32 @@ namespace cis237assignment3
             toolBox = Toolbox;
             computerConnection = ComputerConnection;
             arm = Arm;
+            CalculateTotalCost();
+        }
+        /// <summary>
+        /// only for extending this class
+        /// </summary>
+        /// <param name="material"></param>
+        /// <param name="model"></param>
+        /// <param name="color"></param>
+        /// <param name="Toolbox"></param>
+        /// <param name="ComputerConnection"></param>
+        /// <param name="Arm"></param>
+        protected UtilityDroid(String material, String model, String color, bool Toolbox, bool ComputerConnection, bool Arm): base(material, model, color) 
+        {
+            toolBox = Toolbox;
+            computerConnection = ComputerConnection;
+            arm = Arm;
         }
         public override void CalculateTotalCost()
         {
-            TotalCost = base.baseCost;
+            base.totalCost = base.baseCost;
             if(toolBox)
-                TotalCost += 500m;
+                base.totalCost += 500m;
             if(computerConnection)
-                TotalCost += 700m;
+                base.totalCost += 700m;
             if (arm)
-                TotalCost += 300m;
+                base.totalCost += 300m;
         }
         protected virtual string optionsString()
         {
@@ -46,7 +62,24 @@ namespace cis237assignment3
         }
         public override string ToString()
         {
-            return base.ToString() + " with " + optionsString();
+            return base.ToString() + " with " + optionsString() + " Costing " + TotalCost + " Credits";
+        }
+
+        public static new Droid CreateDroid()
+        {
+            bool toolBoxTmp, computerConnectionTmp, armTmp;
+            string material, color;
+            Console.WriteLine("Please input the droids material");
+            material = Console.ReadLine();
+            Console.WriteLine("Please input the droids color");
+            color = Console.ReadLine();
+            Console.WriteLine("has a toolbox? (y/n)");
+            toolBoxTmp = Droid.yesOrNo();
+            Console.WriteLine("has a computer connection? (y/n)");
+            computerConnectionTmp = Droid.yesOrNo();
+            Console.WriteLine("has a arm? (y/n)");
+            armTmp = Droid.yesOrNo();
+            return new UtilityDroid(material, color, toolBoxTmp, computerConnectionTmp, armTmp);
         }
     }
 }

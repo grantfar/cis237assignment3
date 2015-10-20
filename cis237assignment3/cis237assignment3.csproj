@@ -45,8 +45,11 @@
     <Compile Include="droidModelPrice.cs" />
     <Compile Include="Droid.cs" />
     <Compile Include="IDroid.cs" />
+    <Compile Include="JanitorDroid.cs" />
+    <Compile Include="Menu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProtocolDroid.cs" />
     <Compile Include="UtilityDroid.cs" />
   </ItemGroup>
   <ItemGroup>
