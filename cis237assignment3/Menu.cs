@@ -16,6 +16,9 @@ namespace cis237assignment3
             Inventory = new List<Droid>();
             listOfPrices = new droidModelPrice[] { new droidModelPrice("astromech", 1100m), new droidModelPrice("protocol", 1500m), new droidModelPrice("janitor", 1000m), new droidModelPrice("utility", 800m) };
         }
+        /// <summary>
+        /// displays the intital menu
+        /// </summary>
         public void DisplayUI()
         {
             Console.WriteLine("1: Add Droid" + Environment.NewLine +

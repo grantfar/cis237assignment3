@@ -33,7 +33,24 @@ namespace cis237assignment3
             vacuum = Vacuum;
             TrashCompacter = trashCompactor;
         }
-
+        
+        /// <summary>
+        /// calculates the cost of the droid
+        /// based on the features it has
+        /// </summary>
+        public override void CalculateTotalCost()
+        {
+            base.CalculateTotalCost();
+            if (vacuum)
+                base.totalCost += 50m;
+            if (trashCompactor)
+                base.totalCost += 200m;
+        }
+        /// <summary>
+        /// this is a methiod to create the part of the toString that
+        /// lists all the equiped options
+        /// </summary>
+        /// <returns></returns>
         protected override string optionsString()
         {
             List<String> returnStrings = new List<string>();
@@ -68,24 +85,37 @@ namespace cis237assignment3
             String returnString = base.ToString();
             return returnString.Substring(0, returnString.IndexOf("with") + 5) + optionsString() + " Costing " + TotalCost + " Credits";
         }
+
+        /// <summary>
+        /// returns an instance of JanitorDroid based of the prompts
+        /// </summary>
+        /// <returns></returns>
         public static new Droid CreateDroid()
         {
             bool toolBoxTmp, computerConnectionTmp, armTmp, vacuumTmp, trashCompactorTmp;
             string material, color;
+            
             Console.WriteLine("Please input the droids material");
             material = Console.ReadLine();
+            
             Console.WriteLine("Please input the droids color");
             color = Console.ReadLine();
+            
             Console.WriteLine("has a toolbox? (y/n)");
             toolBoxTmp = Droid.yesOrNo();
+            
             Console.WriteLine("has a computer connection? (y/n)");
             computerConnectionTmp = Droid.yesOrNo();
+            
             Console.WriteLine("has a arm? (y/n)");
             armTmp = Droid.yesOrNo();
+            
             Console.WriteLine("has a vacuum? (y/n)");
             vacuumTmp = Droid.yesOrNo();
+            
             Console.WriteLine("has a trash compactor? (y/n)");
             trashCompactorTmp = Droid.yesOrNo();
+            
             return new JanitorDroid(material, color, toolBoxTmp, computerConnectionTmp, armTmp,trashCompactorTmp,vacuumTmp);
         }
     }

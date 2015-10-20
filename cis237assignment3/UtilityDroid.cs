@@ -31,6 +31,11 @@ namespace cis237assignment3
             computerConnection = ComputerConnection;
             arm = Arm;
         }
+
+        /// <summary>
+        /// calculates the cost of the droid
+        /// based on the features it has
+        /// </summary>
         public override void CalculateTotalCost()
         {
             base.totalCost = base.baseCost;
@@ -41,6 +46,11 @@ namespace cis237assignment3
             if (arm)
                 base.totalCost += 300m;
         }
+        /// <summary>
+        /// this is a methiod to create the part of the toString that
+        /// lists all the equiped options
+        /// </summary>
+        /// <returns></returns>
         protected virtual string optionsString()
         {
             List<String> returnStrings = new List<string>();
@@ -65,20 +75,30 @@ namespace cis237assignment3
             return base.ToString() + " with " + optionsString() + " Costing " + TotalCost + " Credits";
         }
 
+        /// <summary>
+        /// returns an instance of UtilityDroid based of the prompts
+        /// </summary>
+        /// <returns></returns>
         public static new Droid CreateDroid()
         {
             bool toolBoxTmp, computerConnectionTmp, armTmp;
             string material, color;
+            
             Console.WriteLine("Please input the droids material");
             material = Console.ReadLine();
+            
             Console.WriteLine("Please input the droids color");
             color = Console.ReadLine();
+            
             Console.WriteLine("has a toolbox? (y/n)");
             toolBoxTmp = Droid.yesOrNo();
+            
             Console.WriteLine("has a computer connection? (y/n)");
             computerConnectionTmp = Droid.yesOrNo();
+            
             Console.WriteLine("has a arm? (y/n)");
             armTmp = Droid.yesOrNo();
+            
             return new UtilityDroid(material, color, toolBoxTmp, computerConnectionTmp, armTmp);
         }
     }

@@ -18,13 +18,16 @@ namespace cis237assignment3
             model = Model;
             color = Color;
         }
+        
         protected void CalculateBaseCost(droidModelPrice[] droidCosts)
         {
             foreach(droidModelPrice d in droidCosts)
                 if (d.model.Equals(model))
                     baseCost = d.price;
         }
+        
         public abstract void CalculateTotalCost();
+        
         public decimal TotalCost
         {
             get
@@ -36,29 +39,42 @@ namespace cis237assignment3
                 totalCost = value;
             }
         }
+        
         public override string ToString()
         {
             return "a " + color + " " + material + " " + model + " droid";
         }
+        
+        /// <summary>
+        /// A methiod for creating droids
+        /// </summary>
+        /// <returns></returns>
+        
         public static Droid CreateDroid()
         {
             return null;
         }
         
+        /// <summary>
+        /// This is a methiod for yes or no inputs
+        /// </summary>
+        /// <returns></returns>
         protected static bool yesOrNo()
         {
+            //random char
             char pressed = 'u';
             while(!(pressed == 'y' || pressed == 'Y' || pressed == 'n' || pressed == 'N'))
             {
+                //deletes the previous keypress from the console
                 int currentLineInt = Console.CursorTop;
                 Console.SetCursorPosition(0, Console.CursorTop);
                 Console.Write(new string(' ', 1));
                 Console.SetCursorPosition(0, currentLineInt);
                 
                 pressed = Console.ReadKey().KeyChar;
-                
             }
             Console.WriteLine("");
+            //returns true if yes
             return pressed == 'y' || pressed == 'Y';
         }
     }

@@ -29,6 +29,10 @@ namespace cis237assignment3
             CalculateTotalCost();
         }
         
+        /// <summary>
+        /// calculates the cost of the droid
+        /// based on the features it has
+        /// </summary>
         public override void CalculateTotalCost()
         {
             base.totalCost = base.baseCost + (numOfLanguages * costPerLanguage);
@@ -38,6 +42,11 @@ namespace cis237assignment3
         {
             return base.ToString() + " supporting " + numOfLanguages + " languages Costing " + TotalCost + " Credits";
         }
+
+        /// <summary>
+        /// returns an instance of ProtocolDroid based of the prompts
+        /// </summary>
+        /// <returns></returns>
         public static new Droid CreateDroid()
         {
             string material, color;
@@ -45,8 +54,10 @@ namespace cis237assignment3
 
             Console.WriteLine("Please input the droids material");
             material = Console.ReadLine();
+            
             Console.WriteLine("Please input the droids color");
             color = Console.ReadLine();
+            
             Console.WriteLine("number of supported languages");
             while (!int.TryParse(Console.ReadLine(), out numOfLanguagesTmp))
             {
@@ -55,6 +66,7 @@ namespace cis237assignment3
                 Console.Write(new string(' ', Console.WindowWidth));
                 Console.SetCursorPosition(0, currentLineInt);
             }
+            
             return new ProtocolDroid(numOfLanguagesTmp,material, color);
         }
     }
